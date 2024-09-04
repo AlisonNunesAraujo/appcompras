@@ -22,7 +22,7 @@ export default function Home() {
   const [carrinho, setCarrinho] = useState("");
 
   async function handleGetCart() {
-    const response = await AsyncStorage.getItem("@compras:cart");
+    const response = await AsyncStorage.getItem("@comprasCarrinho:cart");
     const item = response ? JSON.parse(response) : [];
 
     setCarrinho(item);
@@ -44,7 +44,7 @@ export default function Home() {
     try {
       const updateCart = [...carrinho, dados];
       setCarrinho(updateCart);
-      await AsyncStorage.setItem("@compras:cart", JSON.stringify(updateCart));
+      await AsyncStorage.setItem("@comprasCarrinho:cart", JSON.stringify(updateCart));
       Toast.show({
         type: "success",
         text1: "Adicionando com sucesso!",
@@ -64,7 +64,7 @@ export default function Home() {
 
   async function Remove() {
 
-    const response = await AsyncStorage.removeItem("@compras:cart");
+    const response = await AsyncStorage.removeItem("@comprasCarrinho:cart");
     Toast.show({
       type: "success",
       text1: "Removido",
