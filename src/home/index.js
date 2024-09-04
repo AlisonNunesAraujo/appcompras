@@ -8,16 +8,16 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import { useNavigation} from "@react-navigation/native";
+
+import Toast from "react-native-toast-message";
+
+import Ionincons from "@expo/vector-icons/Ionicons";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import Render from "../render";
 
 export default function Home() {
-  const navigation = useNavigation();
-
-
   const [produto, setProduto] = useState("");
   const [carrinho, setCarrinho] = useState("");
 
@@ -30,7 +30,10 @@ export default function Home() {
 
   async function handleNew() {
     if (produto === "") {
-      alert("Preencha todos os campos!");
+      Toast.show({
+        type: "info",
+        text1: "Voçê deve preencher todos os campos!",
+      });
       return;
     }
 
@@ -42,6 +45,10 @@ export default function Home() {
       const updateCart = [...carrinho, dados];
       setCarrinho(updateCart);
       await AsyncStorage.setItem("@compras:cart", JSON.stringify(updateCart));
+      Toast.show({
+        type: "success",
+        text1: "Adicionando com sucesso!",
+      });
 
       console.log(updateCart);
 
@@ -55,16 +62,32 @@ export default function Home() {
     handleGetCart();
   }, [Remove]);
 
-
-
   async function Remove() {
+
     const response = await AsyncStorage.removeItem("@compras:cart");
+    Toast.show({
+      type: "success",
+      text1: "Removido",
+      text2: "Item removido com sucesso!",
+    });
+  }
+
+  function RendleButton() {
+    if (carrinho.length > 0) {
+      return (
+        <TouchableOpacity onPress={Remove} style={styles.buttonRemove}>
+          <Text style={styles.textRemove}>Limpar lista!</Text>
+        </TouchableOpacity>
+      );
+    } else {
+      return null;
+    }
   }
 
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Text style={styles.title}>Adcione itens na sua lista!</Text>
+        <Text style={styles.title}>Adicione itens no seu carrinho de compras!</Text>
         <TextInput
           placeholder="Produto da compra!"
           value={produto}
@@ -76,15 +99,20 @@ export default function Home() {
           <Text style={styles.textbutton}>Adcionar no Carrinho!</Text>
         </TouchableOpacity>
 
+        <View style={styles.infoCart}>
+          <Text style={styles.textInfoCart}>
+            No seu carrinho tem {carrinho.length} itens
+          </Text>
+          <Ionincons name="cart" size="25" color="red" />
+        </View>
+
         <FlatList
           style={styles.flat}
           data={carrinho}
           renderItem={({ item }) => <Render data={item} />}
         />
 
-        <TouchableOpacity onPress={Remove} style={styles.buttonRemove}>
-          <Text style={styles.textRemove}>Limpar lista!</Text>
-        </TouchableOpacity>
+        {RendleButton()}
       </View>
     </SafeAreaView>
   );
@@ -94,6 +122,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
+    height: "100%",
   },
   inputs: {
     width: "90%",
@@ -101,12 +130,12 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 10,
     backgroundColor: "white",
+    fontSize: 15,
   },
 
   flat: {
-    marginTop: 40,
+    marginTop: 10,
     width: "90%",
-    height: "70%",
   },
   button: {
     backgroundColor: "red",
@@ -128,7 +157,8 @@ const styles = StyleSheet.create({
     width: "90%",
     borderRadius: 5,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
+    marginBottom: 5,
   },
   textRemove: {
     color: "white",
@@ -142,5 +172,18 @@ const styles = StyleSheet.create({
     color: "red",
     fontWeight: "bold",
     marginTop: 10,
+  },
+  infoCart: {
+    width: "90%",
+    height: 40,
+    justifyContent: "space-evenly",
+    marginTop: 10,
+    flexDirection: "row",
+  },
+  textInfoCart: {
+    color: "red",
+    fontSize: 16,
+    fontWeight: "600",
+    fontStyle: "italic",
   },
 });

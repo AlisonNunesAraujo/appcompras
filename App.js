@@ -1,15 +1,15 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native';
-
-import NavSatck from './src/routs';
-
-
-
+import React from "react";
+import Home from "./src/home";
+import Toast from "react-native-toast-message";
+import { StatusBar } from "react-native";
 export default function App() {
   return (
-    <NavigationContainer>
-      <NavSatck/>
-    </NavigationContainer>
-  );
+  <>
+  <StatusBar  barStyle="dark-content"/>
+  <Home />
+  <Toast/>
+  </>
+  )
+  ;
 }
 
