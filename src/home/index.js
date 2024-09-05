@@ -68,7 +68,7 @@ export default function Home() {
     Toast.show({
       type: "success",
       text1: "Removido",
-      text2: "Item removido com sucesso!",
+      text2: "Itens removido com sucesso!",
     });
   }
 

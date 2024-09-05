@@ -4,19 +4,19 @@
     "slug": "compras",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/app.jpg",
+    "userInterfaceStyle": "black",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splashapp.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "black"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/app.jpg",
         "backgroundColor": "#ffffff"
       }
     },
