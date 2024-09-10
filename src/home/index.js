@@ -7,11 +7,14 @@ import {
   TextInput,
   TouchableOpacity,
   FlatList,
+  Image,
 } from "react-native";
 
 import Toast from "react-native-toast-message";
 
 import Ionincons from "@expo/vector-icons/Ionicons";
+
+
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -43,8 +46,10 @@ export default function Home() {
 
     try {
       const updateCart = [...carrinho, dados];
+
       setCarrinho(updateCart);
-      await AsyncStorage.setItem("@comprasCarrinho:cart", JSON.stringify(updateCart));
+
+      await AsyncStorage.setItem("@comprasCarrinho:cart",JSON.stringify(updateCart));
       Toast.show({
         type: "success",
         text1: "Adicionando com sucesso!",
@@ -63,7 +68,6 @@ export default function Home() {
   }, [Remove]);
 
   async function Remove() {
-
     const response = await AsyncStorage.removeItem("@comprasCarrinho:cart");
     Toast.show({
       type: "success",
@@ -87,7 +91,13 @@ export default function Home() {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Text style={styles.title}>Adicione itens no seu carrinho de compras!</Text>
+      <Image 
+      source={require("../../assets/app.jpg")}
+      style={styles.img}
+      />
+        <Text style={styles.title}>
+          Adicione itens no seu carrinho de compras!
+        </Text>
         <TextInput
           placeholder="Produto da compra!"
           value={produto}
@@ -126,20 +136,19 @@ const styles = StyleSheet.create({
   },
   inputs: {
     width: "90%",
-    padding: 20,
-    margin: 10,
+    padding: 15,
+    margin: 20,
     borderRadius: 10,
-    backgroundColor: "white",
+    backgroundColor: "#808080",
     fontSize: 15,
   },
 
   flat: {
-    marginTop: 10,
     width: "90%",
   },
   button: {
     backgroundColor: "red",
-    padding: 15,
+    padding: 10,
     width: "90%",
     borderRadius: 10,
     justifyContent: "center",
@@ -171,7 +180,7 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     color: "red",
     fontWeight: "bold",
-    marginTop: 10,
+    marginTop: 5,
   },
   infoCart: {
     width: "90%",
@@ -186,4 +195,9 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontStyle: "italic",
   },
+  img:{
+    width: '90%',
+    height: 220,
+    borderRadius: 5
+  }
 });
