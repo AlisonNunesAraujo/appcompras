@@ -8,13 +8,12 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
+  
 } from "react-native";
 
 import Toast from "react-native-toast-message";
 
 import Ionincons from "@expo/vector-icons/Ionicons";
-
-
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -49,7 +48,10 @@ export default function Home() {
 
       setCarrinho(updateCart);
 
-      await AsyncStorage.setItem("@comprasCarrinho:cart",JSON.stringify(updateCart));
+      await AsyncStorage.setItem(
+        "@comprasCarrinho:cart",
+        JSON.stringify(updateCart)
+      );
       Toast.show({
         type: "success",
         text1: "Adicionando com sucesso!",
@@ -91,19 +93,17 @@ export default function Home() {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-      <Image 
-      source={require("../../assets/app.jpg")}
-      style={styles.img}
-      />
         <Text style={styles.title}>
           Adicione itens no seu carrinho de compras!
         </Text>
         <TextInput
-          placeholder="Produto da compra!"
+          placeholder="Item da compra!"
           value={produto}
           onChangeText={setProduto}
-          style={styles.inputs}
+          maxLength={30}
+          style={styles.input}
         />
+        
 
         <TouchableOpacity onPress={handleNew} style={styles.button}>
           <Text style={styles.textbutton}>Adcionar no Carrinho!</Text>
@@ -134,13 +134,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: "100%",
   },
-  inputs: {
+  input: {
     width: "90%",
     padding: 15,
     margin: 20,
     borderRadius: 10,
     backgroundColor: "#808080",
     fontSize: 15,
+    
   },
 
   flat: {
@@ -195,9 +196,4 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontStyle: "italic",
   },
-  img:{
-    width: '90%',
-    height: 220,
-    borderRadius: 5
-  }
 });

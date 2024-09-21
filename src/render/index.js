@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.3,
   },
   text: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: "800",
     marginLeft: 15,
     margin: 15,
