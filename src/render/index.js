@@ -12,7 +12,7 @@ export default function Render({ data }) {
     <SafeAreaView style={styles.safe}>
       <View style={styles.conteiner}>
         <Text style={styles.text}>{data.produto}</Text>
-        <Ionicons name="cart" size={18} color="red" style={styles.icone} />
+        <Ionicons name="cart" size={18} color="white" style={styles.icone} />
       </View>
     </SafeAreaView>
   );
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     width: "90%",
     height: 60,
     borderRadius: 4,
-    backgroundColor: "white",
+    backgroundColor: "black",
     margin: 10,
     flexDirection: "row",
     alignItems: "center",
@@ -39,9 +39,10 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     margin: 15,
     fontStyle: "italic",
-    color: "#808080",
+    color: "white",
   },
   icone: {
     marginRight: 10,
+    
   },
 });
