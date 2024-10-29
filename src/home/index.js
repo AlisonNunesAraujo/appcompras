@@ -7,11 +7,11 @@ import {
   TextInput,
   TouchableOpacity,
   FlatList,
+  StatusBar,
 } from "react-native";
 
 import Toast from "react-native-toast-message";
-
-import Ionincons from "@expo/vector-icons/Ionicons";
+import Header from "../header";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -89,40 +89,35 @@ export default function Home() {
   }
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Text style={styles.title}>
-          Adicione itens no seu carrinho de compras!
+    <View style={styles.container}>
+      <Header />
+      <TextInput
+        placeholder="Item da compra!"
+        value={produto}
+        onChangeText={setProduto}
+        maxLength={30}
+        style={styles.input}
+      />
+
+      <TouchableOpacity onPress={handleNew} style={styles.button}>
+        <Text style={styles.textbutton}>Adcionar no Carrinho!</Text>
+      </TouchableOpacity>
+
+      <View style={styles.infoCart}>
+        <Text style={styles.textInfoCart}>
+          No seu carrinho tem {carrinho.length} itens
         </Text>
-        <TextInput
-          placeholder="Item da compra!"
-          value={produto}
-          onChangeText={setProduto}
-          maxLength={30}
-          style={styles.input}
-        />
-        
-
-        <TouchableOpacity onPress={handleNew} style={styles.button}>
-          <Text style={styles.textbutton}>Adcionar no Carrinho!</Text>
-        </TouchableOpacity>
-
-        <View style={styles.infoCart}>
-          <Text style={styles.textInfoCart}>
-            No seu carrinho tem {carrinho.length} itens
-          </Text>
-          <Ionincons name="cart" size="25" color="red" />
-        </View>
-
-        <FlatList
-          style={styles.flat}
-          data={carrinho}
-          renderItem={({ item }) => <Render data={item} />}
-        />
-
-        {RendleButton()}
+        {/* <Ionincons name="cart" size="25" color="red" /> */}
       </View>
-    </SafeAreaView>
+
+      <FlatList
+        style={styles.flat}
+        data={carrinho}
+        renderItem={({ item }) => <Render data={item} />}
+      />
+
+      {RendleButton()}
+    </View>
   );
 }
 
@@ -139,7 +134,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "#808080",
     fontSize: 15,
-    
   },
 
   flat: {
@@ -166,7 +160,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "flex-end",
-    marginBottom: 5,
+    marginBottom: 20,
   },
   textRemove: {
     color: "white",
@@ -174,13 +168,13 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontStyle: "italic",
   },
-  title: {
-    fontSize: 18,
-    fontStyle: "italic",
-    color: "red",
-    fontWeight: "bold",
-    marginTop: 5,
-  },
+  // title: {
+  //   fontSize: 18,
+  //   fontStyle: "italic",
+  //   color: "red",
+  //   fontWeight: "bold",
+  //   marginTop: 5,
+  // },
   infoCart: {
     width: "90%",
     height: 40,

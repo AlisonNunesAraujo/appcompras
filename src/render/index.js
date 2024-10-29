@@ -1,20 +1,15 @@
 import React from "react";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  StyleSheet,
-} from "react-native";
+import { View, Text, SafeAreaView, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function Render({ data }) {
   return (
-    <SafeAreaView style={styles.safe}>
+    <View style={styles.safe}>
       <View style={styles.conteiner}>
         <Text style={styles.text}>{data.produto}</Text>
         <Ionicons name="cart" size={18} color="white" style={styles.icone} />
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -43,6 +38,5 @@ const styles = StyleSheet.create({
   },
   icone: {
     marginRight: 10,
-    
   },
 });
