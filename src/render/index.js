@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     margin: 15,
     fontStyle: "italic",
     color: "white",
+    fontFamily: 'Arial'
   },
   icone: {
     marginRight: 10,

@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 140,
     backgroundColor: "blue",
-    borderRadius: 15,
     justifyContent: "center",
   },
   title: {
@@ -24,11 +23,13 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "semibold",
     color: "white",
+    fontFamily: 'Arial'
   },
   subTitle: {
     marginStart: 20,
     fontSize: 18,
     color: "white",
     fontWeight: "semibold",
+    fontFamily: 'Arial'
   },
 });

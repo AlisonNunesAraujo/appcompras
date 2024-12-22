@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  SafeAreaView,
   StyleSheet,
   TextInput,
   TouchableOpacity,
@@ -12,6 +11,7 @@ import {
 
 import Toast from "react-native-toast-message";
 import Header from "../header";
+import {Ionicons} from '@expo/vector-icons'
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -55,7 +55,6 @@ export default function Home() {
         text1: "Adicionando com sucesso!",
       });
 
-      console.log(updateCart);
 
       setProduto("");
     } catch (err) {
@@ -107,7 +106,7 @@ export default function Home() {
         <Text style={styles.textInfoCart}>
           No seu carrinho tem {carrinho.length} itens
         </Text>
-        {/* <Ionincons name="cart" size="25" color="red" /> */}
+        
       </View>
 
       <FlatList
@@ -151,7 +150,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 15,
     fontWeight: "700",
-    fontStyle: "italic",
+    fontFamily: 'Arial'
   },
   buttonRemove: {
     backgroundColor: "red",
@@ -167,14 +166,8 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "700",
     fontStyle: "italic",
+    fontFamily: 'Arial'
   },
-  // title: {
-  //   fontSize: 18,
-  //   fontStyle: "italic",
-  //   color: "red",
-  //   fontWeight: "bold",
-  //   marginTop: 5,
-  // },
   infoCart: {
     width: "90%",
     height: 40,
@@ -187,5 +180,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     fontStyle: "italic",
+    fontFamily: 'Arial',
   },
 });

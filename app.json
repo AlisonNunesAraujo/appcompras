@@ -1,27 +1,35 @@
 {
   "expo": {
     "name": "compras",
+    "newArchEnabled": true,
     "slug": "compras",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/app.jpg",
-    "userInterfaceStyle": "black",
+    "icon": "./assets/icone.jpeg",
+    "userInterfaceStyle": "#0000",
     "splash": {
-      "image": "./assets/splashapp.png",
+      "image": "./assets/icone.jpeg",
       "resizeMode": "contain",
-      "backgroundColor": "black"
+      "backgroundColor": "#0000"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "ndefined"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/app.jpg",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./assets/icone.jpeg",
+        "backgroundColor": "#ffff"
+      },
+      "package": "com.alisonaraujo.compras"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icone.jpeg"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "92e52cf7-87bb-4475-ba27-10e0dafc709e"
+      }
     }
   }
 }
