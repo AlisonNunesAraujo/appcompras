@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, SafeAreaView, StyleSheet } from "react-native";
+import { View, Text,StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function Render({ data }) {

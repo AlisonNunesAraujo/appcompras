@@ -7,11 +7,11 @@ import {
   TouchableOpacity,
   FlatList,
   StatusBar,
+  SafeAreaView
 } from "react-native";
 
 import Toast from "react-native-toast-message";
 import Header from "../header";
-import {Ionicons} from '@expo/vector-icons'
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -88,7 +88,8 @@ export default function Home() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor={"blue"} barStyle="light-content"  />
       <Header />
       <TextInput
         placeholder="Item da compra!"
@@ -116,7 +117,7 @@ export default function Home() {
       />
 
       {RendleButton()}
-    </View>
+    </SafeAreaView>
   );
 }
 
